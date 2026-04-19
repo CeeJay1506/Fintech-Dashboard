@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fintech Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div>
+                <p id="welcomeText">Hi, Joseph</p>
+                <h1>$12,750.00</h1>
+                <span>Available Balance</span>
+            </div>
+            <button onclick="openSend()">Send</button>
+        </div>
+
+        <!-- DASHBOARD -->
+        <div class="dashboard">
+
+            <!-- LEFT -->
+            <div class="left">
+
+                <div class="card">
+                    <h3>Recent Transfers</h3>
+                    <div id="users" class="users"></div>
+                </div>
+
+                <div class="card">
+                    <h3>Transactions</h3>
+                    <div id="transactions"></div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+            <div class="right">
+
+                <div class="card chart-card">
+
+                    <div class="toggle">
+                        <button id="expenseBtn" class="active" onclick="setChart('expense')">Expenses</button>
+                        <button id="incomeBtn" onclick="setChart('income')">Income</button>
+                    </div>
+
+                    <canvas id="chart"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- AUTH MODAL -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAuth()">✕</span>
+
+            <h2 id="authTitle">Login</h2>
+
+            <input type="text" id="authName" placeholder="Full Name">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+
+            <button onclick="handleAuth()">Continue</button>
+
+            <p onclick="toggleAuth()" id="authSwitch">
+                Don’t have an account? Sign Up
+            </p>
+        </div>
+    </div>
+
+    <!-- CARD MODAL -->
+    <div class="modal" id="cardModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCard()">✕</span>
+
+            <h2>Card Details</h2>
+
+            <div class="card-ui">
+                <p>CLICK CITY</p>
+                <h3>•••• •••• •••• 7890</h3>
+                <div class="row">
+                    <span id="cardName">Joseph</span>
+                    <span>12/28</span>
+                </div>
+            </div>
+
+            <div class="add-card">+ Add New Card</div>
+        </div>
+    </div>
+
+    <!-- SEND MODAL -->
+    <div class="modal" id="sendModal">
+        <div class="modal-content">
+
+            <span class="close" onclick="closeSend()">✕</span>
+
+            <h2>Send Money</h2>
+
+            <div id="loader" class="loader hidden"></div>
+
+            <h1 id="amount">$0</h1>
+
+            <div class="keypad">
+                <button onclick="press(1)">1</button>
+                <button onclick="press(2)">2</button>
+                <button onclick="press(3)">3</button>
+                <button onclick="press(4)">4</button>
+                <button onclick="press(5)">5</button>
+                <button onclick="press(6)">6</button>
+                <button onclick="press(7)">7</button>
+                <button onclick="press(8)">8</button>
+                <button onclick="press(9)">9</button>
+                <button onclick="clearAmount()">⌫</button>
+                <button onclick="press(0)">0</button>
+            </div>
+
+            <button onclick="sendMoney()">Send</button>
+
+            <div id="successBox" class="success hidden">
+                ✔ Payment Successful
+            </div>
+
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="nav">
+        <button onclick="scrollToTop()">🏠</button>
+        <button onclick="openCard()">💳</button>
+        <button onclick="openAuth()">👤</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
